@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: tholos-onionshare-server
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ONIONSHARE_API_KEY
+        generateValue: true
+      - key: SIGNAL_PROTOCOL_KEY
+        generateValue: true
+      - key: TOR_HIDDEN_SERVICE_KEY
+        generateValue: true
+    healthCheckPath: /health
+    autoDeploy: true
